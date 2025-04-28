@@ -117,6 +117,8 @@ import Image from "next/image";
 import { assets } from "@/assets/assets";
 
 const Hero = () => {
+
+
   const images = [
     assets.image01,
     assets.image02,
@@ -124,18 +126,28 @@ const Hero = () => {
     assets.image04,
   ];
 
+
   // 加一張第一張圖片到最後
+
   const imagesWithClone = [...images, images[0]];
 
+
   const [currentImage, setCurrentImage] = useState(0);
+
   const [isTransitioning, setIsTransitioning] = useState(true);
 
+
+
   useEffect(() => {
+
     const interval = setInterval(() => {
+
       setCurrentImage((prev) => prev + 1);
+
     }, 3000);
 
     return () => clearInterval(interval);
+
   }, []);
 
   useEffect(() => {
@@ -153,8 +165,12 @@ const Hero = () => {
     }
   }, [currentImage]);
 
+
+
   return (
-    <section className="flex flex-col md:flex-row h-[750px] border border-gray-400">
+
+    <section className="flex flex-col lg:flex-row h-[750px] border border-gray-400">
+
       {/* 文字區塊 */}
       <div className="flex-1 flex flex-col items-center justify-center px-8 bg-white text-[#414141]">
         <h1 className="text-4xl font-bold">市集出攤資訊</h1>
