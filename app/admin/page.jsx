@@ -10,7 +10,7 @@ const AdminPage = () => {
 
     <div>
 
-      <h1 className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl tracking-widest'>歡迎光臨</h1>
+      <h1 className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl tracking-widest'>歡迎光臨</h1>
 
     </div>
 
