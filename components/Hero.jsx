@@ -42,7 +42,7 @@ const Hero = () => {
           <Swiper
             modules={[Autoplay]}
             loop={true}
-            autoplay={{delay: 3000}}
+            autoplay={{ delay: 3000 }}
             className="w-full h-full rounded-lg shadow-xl"
           >
 

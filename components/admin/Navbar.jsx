@@ -18,21 +18,24 @@ const Navbar = () => {
 
       {/* 品牌 logo */}
 
-        <Image 
-          onClick={() => router.push('/admin')}
-          src={admin_assets.today_pearl_logo_1} 
-          alt="today_pearl_logo_1" 
-          className='w-[max(10%,80px)] cursor-pointer' 
-        />
+      <Image
+        onClick={() => router.push('/admin')}
+        src={admin_assets.today_pearl_logo_1}
+        alt="today_pearl_logo_1"
+        className='w-[max(10%,80px)] cursor-pointer'
+      />
 
-        <button 
-          onClick={() => router.push('/')} 
-          className='bg-gray-600 text-white px-5 sm:px-7 sm:py-2 rounded-full text-sm sm:text-base'
-        >
-          
-          芝麻關門
-          
-        </button>
+
+      {/* 按下按鈕回到首頁 */}
+
+      <button
+        onClick={() => router.push('/')}
+        className='bg-gray-600 text-white px-5 sm:px-7 sm:py-2 rounded-full text-sm sm:text-base'
+      >
+
+        芝麻關門
+
+      </button>
 
 
     </div>
