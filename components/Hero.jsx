@@ -37,7 +37,7 @@ const Hero = () => {
 
         {/* Swiper 圖片輪播區塊 */}
 
-        <div className='min-h-[500px]'>
+        <div className='min-h-[500px] flex items-center justify-center'>
 
           <Swiper
             modules={[Autoplay]}
