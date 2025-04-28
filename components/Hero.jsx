@@ -154,8 +154,11 @@ const Hero = () => {
   }, [currentImage]);
 
   return (
-    <section className="flex flex-col lg:flex-row h-auto lg:h-[750px] border border-gray-400">
+    <section className="flex flex-col md:flex-row h-auto md:h-[750px] border border-gray-400">
+
+
       {/* 文字區塊 */}
+      
       <div className="flex-1 flex flex-col items-center justify-center px-8 md:px-12 lg:px-16 bg-white text-[#414141] max-w-xl mx-auto py-8">
         <h1 className="text-4xl font-bold text-center md:text-5xl lg:text-6xl">市集出攤資訊</h1>
         <p className="mt-4 text-lg text-center md:text-xl">駁二大義</p>
