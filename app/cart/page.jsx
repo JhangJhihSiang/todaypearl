@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useContext } from "react";
 import { assets } from "@/assets/assets";
 import OrderSummary from "@/components/OrderSummary";
@@ -24,11 +25,11 @@ const Cart = () => {
 
           <div className="flex items-center justify-between mb-8 border-b border-gray-500/30 pb-6">
 
-            <p className="text-2xl md:text-3xl text-gray-500">
+            <div className="text-2xl md:text-3xl text-gray-500">
 
-                <Title text1={'我的'} text2={'購物車'} />
+              <Title text1={'我的'} text2={'購物車'} />
 
-            </p>
+            </div>
 
             <p className="text-lg md:text-xl text-gray-500/80">{getCartCount()} Items</p>
 
@@ -37,7 +38,13 @@ const Cart = () => {
 
           <div className="overflow-x-auto">
 
+
+            {/* 表格 */}
+
             <table className="min-w-full table-auto">
+
+
+              {/* 表格標題橫列 */}
 
               <thead className="text-left">
 
@@ -67,7 +74,14 @@ const Cart = () => {
 
               </thead>
 
+
+              {/* 表格主要內容 */}
+
               <tbody>
+
+
+                {/* cartItems 為物件，Object.keys()將其key值拿出來作陣列 */}
+                {/* map() , find()都是陣列方法 */}
 
                 {Object.keys(cartItems).map((itemId) => {
 
@@ -79,24 +93,28 @@ const Cart = () => {
 
                     <tr key={itemId}>
 
+
+                      {/* 橫列的第一格內容 - 照片＋名稱 */}
+
                       <td className="flex items-center gap-4 py-4 md:px-4 px-1">
 
-                        <div>
 
-                          <div className="rounded-lg overflow-hidden bg-gray-500/10 p-2">
+                        {/* 商品照片 */}
 
-                            <Image
-                              src={product.image[0]}
-                              alt={product.name}
-                              className="w-16 h-auto object-cover mix-blend-multiply"
-                              width={1280}
-                              height={720}
-                            />
+                        <div className="rounded-lg overflow-hidden bg-gray-500/10 p-2">
 
-                          </div>
-
+                          <Image
+                            src={product.image[0]}
+                            alt={product.name}
+                            width={64}
+                            height={64}
+                            className="w-16 h-auto object-cover"
+                          />
 
                         </div>
+
+
+                        {/* 商品名稱 */}
 
                         <div className="text-sm hidden md:block">
 
@@ -106,11 +124,20 @@ const Cart = () => {
 
                       </td>
 
+
+                      {/* 橫列的第二格 - 商品價格 */}
+
                       <td className="py-4 md:px-4 px-1 text-gray-600">${product.price}</td>
+
+
+                      {/* 橫列的第三格 - 數量 */}
 
                       <td className="py-4 md:px-4 px-1">
 
                         <div className="flex items-center md:gap-2 gap-1">
+
+
+                          {/* 數量減少按鈕 */}
 
                           <button onClick={() => updateQuantity(product._id, cartItems[itemId] - 1)}>
 
@@ -122,12 +149,18 @@ const Cart = () => {
 
                           </button>
 
-                          <input 
-                            onChange={e => updateQuantity(product._id, Number(e.target.value))} 
-                            value={cartItems[itemId]} 
-                            type="number" 
+
+                          {/* 商品數量 */}
+
+                          <input
+                            onChange={e => updateQuantity(product._id, Number(e.target.value))}
+                            value={cartItems[itemId]}
+                            type="number"
                             className="w-8 border text-center appearance-none"
                           />
+
+
+                          {/* 數量增加按鈕 */}
 
                           <button onClick={() => addToCart(product._id)}>
 
@@ -143,13 +176,19 @@ const Cart = () => {
 
                       </td>
 
+
+                      {/* 橫列的第四格 - 金額 */}
+
                       <td className="py-4 md:px-4 px-1 text-gray-600">{currency} {(product.price * cartItems[itemId])}</td>
+
+
+                      {/* 商品的第五格 - 移除按鈕 */}
 
                       <td className="py-4 md:px-4 px-1 text-gray-600">
 
                         <Image
                           onClick={() => updateQuantity(product._id, 0)}
-                          src={assets.bin_icon} 
+                          src={assets.bin_icon}
                           width={20}
                           className="cursor-pointer hover:scale-110"
                         />
@@ -168,15 +207,18 @@ const Cart = () => {
 
           </div>
 
-          <button 
-            onClick={()=> router.push('/collection')} 
+
+          {/* 返回 collection 頁面的按鈕 */}
+
+          <button
+            onClick={() => router.push('/collection')}
             className="group flex items-center mt-6 gap-2 text-orange-600"
           >
 
             <Image
-              className="group-hover:-translate-x-1 transition"
               src={assets.left_arrow}
-              alt="arrow_right_icon_colored"
+              alt="arrow_left_icon_colored"
+              className="group-hover:-translate-x-1 transition"
             />
 
             繼續血拼
@@ -184,6 +226,9 @@ const Cart = () => {
           </button>
 
         </div>
+
+
+        {/* components --> OrderSummary.jsx */}
 
         <OrderSummary />
 
@@ -194,5 +239,6 @@ const Cart = () => {
 
   );
 };
+
 
 export default Cart;

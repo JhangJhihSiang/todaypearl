@@ -71,7 +71,7 @@ const ShopContextProvider = (props) => {
         
         setCartItems(cartData);
 
-        toast.success('已成功加入購物車')
+        toast.success('已成功加入購物車',{autoClose:300})
         
         
         if (token) {

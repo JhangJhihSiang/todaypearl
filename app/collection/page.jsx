@@ -129,9 +129,12 @@ const Collection = () => {
       <Navbar />
 
       <SearchBar />
-      
+
+      <div className='hidden sm:block'>
+    
       <ScrollToTop />
 
+      </div>
 
       <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
 
@@ -141,7 +144,7 @@ const Collection = () => {
 
           <p onClick={() => setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2'>篩選條件
 
-            <Image src={assets.dropdown_icon} className={`h-3 sm:hidden ${showFilter ? 'rotate-90' : ''}`} alt="" />
+            <Image src={assets.dropdown_icon} className={`w-5 h-5 sm:hidden ${showFilter ? 'rotate-90' : ''}`} alt="" />
 
           </p>
 

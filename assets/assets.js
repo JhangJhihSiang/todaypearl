@@ -32,6 +32,16 @@ import star_icon from './star_icon.png'
 import cross_icon from './cross_icon.png'
 import heart_icon from './heart_icon.png'
 import heart_icon_red from './heart_icon_red.png'
+import gray_circle from './gray_circle.png'
+import green_circle from './green_circle.png'
+import red_circle from './red_circle.png'
+import yellow_circle from './yellow_circle.png'
+import image01 from './image01.png'
+import image02 from './image02.png'
+import image03 from './image03.png'
+import image04 from './image04.png'
+
+
 
 
 
@@ -50,6 +60,10 @@ export const assets = {
     hero_swiper_2,
     hero_swiper_3,
     hero_swiper_4,
+    image01,
+    image02,
+    image03,
+    image04,
     handmade_icon,
     pearl_icon,
     stall_icon,
@@ -74,5 +88,9 @@ export const assets = {
     contact_img,
     stripe_logo,
     cross_icon,
+    gray_circle,
+    green_circle,
+    red_circle,
+    yellow_circle
 
 }

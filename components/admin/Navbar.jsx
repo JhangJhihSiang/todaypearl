@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 
 
-const Navbar = ({setToken}) => {
+const Navbar = () => {
 
   const router = useRouter()
 
@@ -15,14 +15,24 @@ const Navbar = ({setToken}) => {
 
     <div className='flex items-center py-2 px-[4%] justify-between border-b-2'>
 
+
+      {/* 品牌 logo */}
+
         <Image 
           onClick={() => router.push('/admin')}
           src={admin_assets.pearl_logo} 
-          className='w-[max(10%,80px)] cursor-pointer' 
           alt="pearl_logo" 
+          className='w-[max(10%,80px)] cursor-pointer' 
         />
 
-        <button onClick={() => router.push('/')} className='bg-gray-600 text-white px-5 sm:px-7 sm:py-2 rounded-full text-sm sm:text-base'>芝麻關門</button>
+        <button 
+          onClick={() => router.push('/')} 
+          className='bg-gray-600 text-white px-5 sm:px-7 sm:py-2 rounded-full text-sm sm:text-base'
+        >
+          
+          芝麻關門
+          
+        </button>
 
 
     </div>

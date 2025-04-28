@@ -24,24 +24,29 @@ const Navbar = () => {
     const pathname = usePathname()
 
 
-    useEffect(() => {
-        // 假设你将角色信息存储在 localStorage 或 token 中
-        const userToken = localStorage.getItem('token');  // 从 localStorage 获取 token
 
-        if (userToken) {
-            const decodedToken = JSON.parse(atob(userToken.split('.')[1]));  // 解码 token
+
+    useEffect(() => {
+
+
+        // 解碼 token , token分為 header, payload, signature
+        // payload是主要訊息，包含了 id , role資訊，因此取 [1]也就是第二個元素 payload
+
+        if (token) {
+
+            const decodedToken = JSON.parse(atob(token.split('.')[1]));
+
             if (decodedToken.role === 'admin') {
-                setIsAdmin(true);  // 如果角色是 admin, 显示管理员按钮
+                setIsAdmin(true);
             }
         }
-    }, [token]); // token 更新时，重新检查是否是管理员
-
-    
+    }, [token]);
 
 
 
 
 
+    // 登出功能
 
     const logout = () => {
 
@@ -55,7 +60,7 @@ const Navbar = () => {
 
         setIsAdmin(false)
 
-        toast.success('成功登出！期待您下次再度光臨')
+        toast.success('成功登出！期待您下次再度光臨', { autoClose: 500 })
 
 
 
@@ -69,19 +74,28 @@ const Navbar = () => {
 
         <nav className='flex items-center justify-between py-5 font-medium'>
 
+
+            {/* 品牌 logo */}
+
             <Link href='/'>
 
                 <Image
                     src={assets.today_pearl_logo_1}
-                    className='w-36'
                     alt="today_pearl_logo_1"
+                    className='w-36'
                 />
 
             </Link>
 
+
+            {/* 導覽列 */}
+
             <div className='hidden sm:flex gap-10 text-base text-gray-700'>
 
-                <Link href='/' className='flex flex-col items-center gap-1 group'>
+                <Link
+                    href='/'
+                    className='flex flex-col items-center gap-1 group'
+                >
 
                     <p>首頁</p>
 
@@ -89,7 +103,10 @@ const Navbar = () => {
 
                 </Link>
 
-                <Link href='/collection' className='flex flex-col items-center gap-1 group'>
+                <Link
+                    href='/collection'
+                    className='flex flex-col items-center gap-1 group'
+                >
 
                     <p>飾品</p>
 
@@ -98,7 +115,10 @@ const Navbar = () => {
                 </Link>
 
 
-                <Link href='/about' className='flex flex-col items-center gap-1 group'>
+                <Link
+                    href='/about'
+                    className='flex flex-col items-center gap-1 group'
+                >
 
                     <p>關於今珠</p>
 
@@ -107,7 +127,10 @@ const Navbar = () => {
                 </Link>
 
 
-                <Link href='/contact' className='flex flex-col items-center gap-1 group'>
+                <Link
+                    href='/contact'
+                    className='flex flex-col items-center gap-1 group'
+                >
 
                     <p>聯絡我們</p>
 
@@ -117,44 +140,58 @@ const Navbar = () => {
 
 
 
-
             </div>
 
 
             <div className='flex items-center gap-6'>
 
+
+                {/* 路徑是 collection 的話，顯示搜尋圖示 */}
+
                 {pathname === '/collection' && (
 
                     <Image
-                        src={assets.search_icon}
                         onClick={() => setShowSearch((prev) => !prev)}
-                        className="w-5 cursor-pointer"
+                        src={assets.search_icon}
                         alt="search_icon"
+                        className="w-5 cursor-pointer"
                     />
                 )}
 
+
+                {/* 身份為管理員的話，顯示芝麻開門按鈕 */}
+
                 {isAdmin && (
+
                     <button
                         onClick={() => router.push('/admin')}
-                        className='bg-gray-600 text-white px-5 sm:px-7 sm:py-2 rounded-full text-sm sm:text-base'>芝麻開門</button>
+                        className='bg-gray-600 text-white px-5 sm:px-7 sm:py-2 rounded-full text-sm sm:text-base'
+                    >
+
+                        芝麻開門
+
+                    </button>
                 )}
 
 
+                {/* 個人檔案圖示 */}
 
                 <div className='group relative'>
 
                     <Image
-                        src={assets.profile_icon}
                         onClick={() => token ? null : router.push('/login')}
-                        className='w-5 cursor-pointer'
+                        src={assets.profile_icon}
                         alt="profile_icon"
+                        className='w-5 cursor-pointer'
                     />
 
 
-                    {/* Dropdown Menu */}
+                    {/* 有 token 才顯示下拉選單 */}
 
                     {token &&
 
+
+                        // 將整個變成一個 group，碰到任何一個地方都會顯示
 
                         <div className='hidden group-hover:block absolute  right-0 pt-4 z-10'>
 
@@ -164,15 +201,21 @@ const Navbar = () => {
                                     onClick={() => router.push('/orders')}
                                     className='cursor-pointer hover:text-black'
                                 >
+
                                     我的訂單
+
                                 </p>
 
+
+                                {/* 點擊執行 logout函式，也就是登出功能 */}
 
                                 <p
                                     onClick={logout}
                                     className='cursor-pointer hover:text-black'
                                 >
+
                                     登出
+
                                 </p>
 
                             </div>
@@ -182,33 +225,46 @@ const Navbar = () => {
 
                 </div>
 
-                <Link href='/cart' className='relative'>
+
+                {/* 購物車圖示 */}
+
+                <Link
+                    href='/cart'
+                    className='relative'
+                >
 
                     <Image
                         src={assets.cart_icon}
-                        className='w-5 min-w-5'
                         alt="cart_icon"
+                        className='w-5 min-w-5'
                     />
 
                     <p className='absolute w-4 right-[-5px] bottom-[-5px] text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{getCartCount()}</p>
 
                 </Link>
 
+
+                {/* 只有在小螢幕時才會出現的漢堡選單 */}
+
                 <Image
                     onClick={() => setVisible(true)}
                     src={assets.menu_icon}
-                    className='w-5 cursor-pointer sm:hidden'
                     alt="menu_icon"
+                    className='w-5 cursor-pointer sm:hidden'
                 />
 
             </div>
 
-            {/* Sidebar Menu For Small Screens */}
+
+            {/* 點擊漢堡選單時會出現導覽列 */}
 
             <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full z-50' : 'w-0'}`}>
 
 
                 <div className='flex flex-col text-gray-600'>
+
+
+                    {/* 返回功能 */}
 
                     <div
                         onClick={() => setVisible(false)}
@@ -217,45 +273,48 @@ const Navbar = () => {
 
                         <Image
                             src={assets.dropdown_icon}
-                            className='h-4 rotate-180'
                             alt="dropdown_icon"
+                            className='w-4 h-4 rotate-180'
                         />
 
                         <p>返回</p>
 
                     </div>
 
+
+                    {/* 導覽列 */}
+
                     <Link
+                        href='/'
                         onClick={() => setVisible(false)}
                         className='py-2 pl-6 border hover:bg-[#fabea9]'
-                        href='/'
                     >
                         首頁
 
                     </Link>
 
                     <Link
+                        href='/collection'
                         onClick={() => setVisible(false)}
                         className='py-2 pl-6 border hover:bg-[#fabea9]'
-                        href='/collection'
                     >
                         飾品
 
                     </Link>
 
                     <Link
+                        href='/about'
                         onClick={() => setVisible(false)}
                         className='py-2 pl-6 border hover:bg-[#fabea9]'
-                        href='/about'
                     >
                         關於今珠
 
                     </Link>
 
                     <Link
+                        href='/contact'
                         onClick={() => setVisible(false)}
                         className='py-2 pl-6 border hover:bg-[#fabea9]'
-                        href='/contact'
                     >
                         聯絡我們
 
@@ -270,5 +329,6 @@ const Navbar = () => {
         </nav>
     )
 }
+
 
 export default Navbar
