@@ -172,12 +172,23 @@ const Hero = () => {
     <section className="flex flex-col lg:flex-row h-[750px] border border-gray-400">
 
       {/* 文字區塊 */}
+
       <div className="flex-1 flex flex-col items-center justify-center px-8 bg-white text-[#414141]">
+
         <h1 className="text-4xl font-bold">市集出攤資訊</h1>
-        <p className="mt-4 text-lg">駁二大義</p>
-        <p className="mt-4 text-lg">駁二大義</p>
-        <p className="mt-4 text-lg">駁二大義</p>
-        <p className="mt-4 text-lg">駁二大義</p>
+
+        <p className="mt-4 text-lg">4/3 ~ 4/6 : 駁二大義</p>
+
+        <p className="mt-4 text-lg">4/3 ~ 4/6 : 駁二大義</p>
+
+        <p className="mt-4 text-lg">4/3 ~ 4/6 : 駁二大義</p>
+
+        <p className="mt-4 text-lg">4/3 ~ 4/6 : 駁二大義</p>
+
+        <p className="mt-4 text-lg">4/3 ~ 4/6 : 駁二大義</p>
+
+        <p className="mt-4 text-lg">4/3 ~ 4/6 : 駁二大義</p>
+
       </div>
 
       {/* 圖片輪播區 */}
