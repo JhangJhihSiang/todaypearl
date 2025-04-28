@@ -169,7 +169,7 @@ const Hero = () => {
 
   return (
 
-    <section className="flex flex-col lg:flex-row h-[750px] border border-gray-400">
+    <section className="flex flex-col lg:flex-row border border-gray-400">
 
       {/* 文字區塊 */}
 
@@ -192,7 +192,9 @@ const Hero = () => {
       </div>
 
       {/* 圖片輪播區 */}
+
       <div className="relative w-full md:w-[560px] h-full overflow-hidden">
+
         <div
           className="flex h-full"
           style={{
