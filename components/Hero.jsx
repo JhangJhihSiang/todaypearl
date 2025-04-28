@@ -112,79 +112,6 @@
 // export default Hero
 
 
-// import { useState, useEffect } from "react";
-// import Image from "next/image";
-// import { assets } from "@/assets/assets";
-
-// const Hero = () => {
-
-
-//   const images = [
-//     assets.image01,
-//     assets.image02,
-//     assets.image03,
-//     assets.image04
-//   ];
-
-//   const [currentImage, setCurrentImage] = useState(0);
-
-//   // 設置自動輪播
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrentImage((prev) => (prev + 1) % images.length);
-//     }, 3000); // 每3秒切換圖片
-//     return () => clearInterval(interval); // 清除計時器
-//   }, []);
-
-//   return (
-//     <section className="flex flex-col md:flex-row h-[750px] border border-gray-400">
-
-//       {/* 文字區塊 */}
-//       <div className="flex-1 flex flex-col items-center justify-center px-8 bg-white text-[#414141]">
-//         <h1 className="text-4xl font-bold">市集出攤資訊</h1>
-//         <p className="mt-4 text-lg">駁二大義</p>
-//         <p className="mt-4 text-lg">駁二大義</p>
-//         <p className="mt-4 text-lg">駁二大義</p>
-//         <p className="mt-4 text-lg">駁二大義</p>
-
-//       </div>
-
-//       {/* 右側圖片輪播區 */}
-
-//       <div className="relative w-full md:w-[560px] h-full overflow-hidden">
-//         <div
-//           className="flex h-full transition-transform duration-700 ease-in-out"
-//           style={{
-//             transform: `translateX(-${currentImage * 100}%)`,
-//           }}
-//         >
-//           {images.map((img, index) => (
-//             <div key={index} className="relative w-full flex-shrink-0 h-full">
-//               <Image
-//                 src={img}
-//                 alt={`輪播圖片 ${index + 1}`}
-//                 layout="fill"
-//                 objectFit="cover"
-//               />
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//       {/* <div className="relative w-full md:w-[560px] h-full mt-4 md:mt-0">
-//         <Image
-//           src={images[currentImage]}
-//           alt="輪播圖片"
-//           layout="fill"
-//           objectFit="cover"
-//         />
-//       </div> */}
-//     </section>
-//   );
-// };
-
-// export default Hero;
-
-
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
@@ -227,7 +154,7 @@ const Hero = () => {
   }, [currentImage]);
 
   return (
-    <section className="flex flex-col md:flex-row h-auto md:h-[750px] border border-gray-400">
+    <section className="flex flex-col lg:flex-row h-auto lg:h-[750px] border border-gray-400">
       {/* 文字區塊 */}
       <div className="flex-1 flex flex-col items-center justify-center px-8 md:px-12 lg:px-16 bg-white text-[#414141] max-w-xl mx-auto py-8">
         <h1 className="text-4xl font-bold text-center md:text-5xl lg:text-6xl">市集出攤資訊</h1>
