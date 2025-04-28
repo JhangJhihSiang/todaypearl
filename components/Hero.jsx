@@ -208,7 +208,7 @@ const Hero = () => {
                 src={img}
                 alt={`輪播圖片 ${index}`}
                 layout="fill" // 填滿父容器的寬高
-                className="object-cover sm:object-contain"
+                className="object-contain lg:object-cover"
               />
             </div>
           ))}
