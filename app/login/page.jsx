@@ -37,7 +37,7 @@ const Login = () => {
 
           localStorage.setItem('token', response.data.token)
 
-          toast.success('恭喜您成為尊爵會員')
+          toast.success('恭喜您成為尊爵會員',{autoClose:500})
 
         } else {
           toast.error(response.data.message)
@@ -49,7 +49,7 @@ const Login = () => {
 
         if (response.data.success) {
           setToken(response.data.token)
-          toast.success('尊爵會員歡迎光臨～')
+          toast.success('尊爵會員歡迎光臨～',{autoClose:500})
 
           localStorage.setItem('token', response.data.token)
         } else {
