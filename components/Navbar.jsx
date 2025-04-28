@@ -250,7 +250,7 @@ const Navbar = () => {
                     onClick={() => setVisible(true)}
                     src={assets.menu_icon}
                     alt="menu_icon"
-                    className='w-5 cursor-pointer lg:hidden'
+                    className='w-5 cursor-pointer sm:hidden'
                 />
 
             </div>
