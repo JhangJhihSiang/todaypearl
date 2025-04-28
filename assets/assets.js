@@ -36,10 +36,6 @@ import gray_circle from './gray_circle.png'
 import green_circle from './green_circle.png'
 import red_circle from './red_circle.png'
 import yellow_circle from './yellow_circle.png'
-import image01 from './image01.png'
-import image02 from './image02.png'
-import image03 from './image03.png'
-import image04 from './image04.png'
 
 
 
@@ -51,7 +47,6 @@ import support_img from './support_img.png'
 import menu_icon from './menu_icon.png'
 import about_img from './about_img.png'
 import contact_img from './contact_img.png'
-import stripe_logo from './stripe_logo.png'
 
 export const assets = {
     today_pearl_logo_1,
@@ -60,10 +55,6 @@ export const assets = {
     hero_swiper_2,
     hero_swiper_3,
     hero_swiper_4,
-    image01,
-    image02,
-    image03,
-    image04,
     handmade_icon,
     pearl_icon,
     stall_icon,
@@ -86,7 +77,6 @@ export const assets = {
     menu_icon,
     about_img,
     contact_img,
-    stripe_logo,
     cross_icon,
     gray_circle,
     green_circle,

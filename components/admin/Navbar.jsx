@@ -20,8 +20,8 @@ const Navbar = () => {
 
         <Image 
           onClick={() => router.push('/admin')}
-          src={admin_assets.pearl_logo} 
-          alt="pearl_logo" 
+          src={admin_assets.today_pearl_logo_1} 
+          alt="today_pearl_logo_1" 
           className='w-[max(10%,80px)] cursor-pointer' 
         />
 

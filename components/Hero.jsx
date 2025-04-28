@@ -35,64 +35,77 @@ const Hero = () => {
         </div>
 
 
-        {/* Swiper 圖片輪播區塊 */}
+        {/* Swiper 圖片幻燈片*/}
 
         <div className='min-h-[500px] flex items-center justify-center'>
 
           <Swiper
             modules={[Autoplay]}
             loop={true}
-            autoplay={{
-              delay: 3000,  // 設置延遲為3秒
-            }}
+            autoplay={{delay: 3000}}
             className="w-full h-full rounded-lg shadow-xl"
           >
+
+
+            {/* 第一張幻燈片 */}
 
             <SwiperSlide>
 
               <Image
-                src={assets.image01}
+                src={assets.hero_swiper_1}
                 alt='image01'
                 className="w-full h-full object-cover rounded-lg"
               />
 
             </SwiperSlide>
 
+
+            {/* 第二張幻燈片 */}
+
             <SwiperSlide>
 
               <Image
-                src={assets.image02}
+                src={assets.hero_swiper_2}
                 alt='image02'
                 className="w-full h-full object-cover rounded-lg"
               />
 
             </SwiperSlide>
 
+
+            {/* 第三張幻燈片 */}
+
             <SwiperSlide>
 
               <Image
-                src={assets.image03}
+                src={assets.hero_swiper_3}
                 alt='image03'
                 className="w-full h-full object-cover rounded-lg"
               />
 
             </SwiperSlide>
 
+
+            {/* 第四張幻燈片 */}
+
             <SwiperSlide>
 
               <Image
-                src={assets.image04}
+                src={assets.hero_swiper_4}
                 alt='image04'
                 className="w-full h-full object-cover rounded-lg"
               />
 
+
             </SwiperSlide>
+
 
           </Swiper>
 
         </div>
 
       </div>
+
 
     </section>
   );
