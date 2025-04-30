@@ -6,6 +6,7 @@ import React, { useContext, useState } from 'react'
 
 
 const ProductItem = ({ id, image, name, price }) => {
+  // {id, image, name, price}：解構賦值，從父元件傳來的 props 中提取屬性，並賦值到變數中
 
 
 

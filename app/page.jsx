@@ -1,6 +1,7 @@
 'use client'
 
 import BestSeller from '@/components/BestSeller'
+import Copyright from '@/components/Copyright'
 import Footer from '@/components/Footer'
 import Hero from '@/components/Hero'
 import LatestCollection from '@/components/LatestCollection'
@@ -27,6 +28,8 @@ const Home = () => {
         <OurPolicy />
 
         <Footer />
+
+        <Copyright />
 
       </div>
 

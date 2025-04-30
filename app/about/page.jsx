@@ -22,12 +22,18 @@ const About = () => {
 
         <div className='text-4xl text-center pt-8 border-t'>
 
-          <Title text1={'關於'} text2={'今珠'} />
+          <Title 
+            text1={'關於'} 
+            text2={'今珠'} 
+          />
 
         </div>
 
 
         <div className='flex flex-col md:flex-row my-10 gap-16'>
+
+
+          {/* 左邊是圖片 */}
 
           <Image
             src={assets.about_img}
@@ -37,7 +43,7 @@ const About = () => {
 
 
 
-          {/* 關於今珠的主要內容 */}
+          {/* 右邊是關於今珠的主要內容 */}
 
           <div className='flex flex-col justify-center gap-6 md:w-2/4 text-gray-600'>
 
@@ -60,7 +66,10 @@ const About = () => {
 
         <div className='text-xl py-4'>
 
-          <Title text1={'為什麼'} text2={'選擇我們'} />
+          <Title 
+            text1={'為什麼'} 
+            text2={'選擇我們'} 
+          />
 
         </div>
 
@@ -70,7 +79,7 @@ const About = () => {
 
           {/* 今珠特色 1 */}
 
-          <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5 group relative'>
+          <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
 
             <b>品質保證：</b>
 
@@ -108,6 +117,7 @@ const About = () => {
 
 
     </>
+    
   )
 }
 

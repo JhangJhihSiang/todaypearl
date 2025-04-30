@@ -6,6 +6,8 @@ import React from 'react'
 const Footer = () => {
 
 
+    // 滾動到頁首
+
     const scrollToTop = () => {
 
         window.scrollTo({top: 0, behavior:'smooth'})
@@ -22,10 +24,10 @@ const Footer = () => {
             <div>
 
                 <Image 
-                    src={assets.today_pearl_logo_2} 
                     onClick={scrollToTop} 
-                    className='mb-5 w-80' 
+                    src={assets.today_pearl_logo_2} 
                     alt="today_pearl_logo_2" 
+                    className='mb-5 w-80 cursor-pointer' 
                 />
 
 
@@ -37,23 +39,29 @@ const Footer = () => {
 
                 <div className='flex flex-row gap-8 text-gray-600'>
 
-                    <Link target='_blank' href="https://www.facebook.com/share/1Q111xKs49/?mibextid=wwXlfr">
+                    <Link 
+                        href="https://www.facebook.com/share/1Q111xKs49/?mibextid=wwXlfr"
+                        target='_blank' 
+                    >
 
                         <Image
                             src={assets.facebook_icon} 
-                            className='w-20 hover:scale-110 cursor-pointer'  
                             alt="facebook_icon" 
+                            className='w-20 hover:scale-110 cursor-pointer'  
                         />
 
                     </Link>
 
 
-                    <Link target='_blank' href="https://www.instagram.com/p/DGZXq7yTf0J/?igsh=MWZ3OG5scnJtY3RwZg==">
+                    <Link 
+                        href="https://www.instagram.com/p/DGZXq7yTf0J/?igsh=MWZ3OG5scnJtY3RwZg=="
+                        target='_blank' 
+                    >
                     
                         <Image 
                             src={assets.instagram_icon} 
-                            className='w-20 hover:scale-110 cursor-pointer' 
                             alt="instagram_icon" 
+                            className='w-20 hover:scale-110 cursor-pointer' 
                         />
                         
                     </Link>
@@ -69,7 +77,7 @@ const Footer = () => {
 
             <hr />
 
-            <p className='py-5 text-sm text-center'>&copy;Copyright 2025 By TODAY PEARL - All Rights Reserved.</p>
+            {/* <p className='py-5 text-xs text-center'>&copy;Copyright 2025 By TODAY_PEARL - All Rights Reserved.</p> */}
 
         </div>
       

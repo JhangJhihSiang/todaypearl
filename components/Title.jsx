@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Title = ({ text1, text2 }) => {
+  // {text1, text2}：解構賦值，從父元件傳來的 props 中直接提取屬性，並賦值到變數中
 
 
   return (

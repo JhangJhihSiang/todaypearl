@@ -112,6 +112,7 @@ const AddAddress = () => {
 
 
                             {/* 連結外部門市查詢網站 */}
+                            {/* target="_blank" : 開新視窗 */}
 
                             {address.store === '7-11'
 

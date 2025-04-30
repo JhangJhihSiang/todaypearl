@@ -12,6 +12,7 @@ const Cart = () => {
 
   const { products, router, cartItems, addToCart, updateQuantity, getCartCount, token, currency } = useContext(ShopContext);
 
+
   return (
 
     <>
@@ -27,7 +28,10 @@ const Cart = () => {
 
             <div className="text-2xl md:text-3xl text-gray-500">
 
-              <Title text1={'我的'} text2={'購物車'} />
+              <Title 
+                text1={'我的'} 
+                text2={'購物車'} 
+              />
 
             </div>
 
@@ -80,8 +84,9 @@ const Cart = () => {
               <tbody>
 
 
-                {/* cartItems 為物件，Object.keys()將其key值拿出來作陣列 */}
-                {/* map() , find()都是陣列方法 */}
+                {/* cartItems 為物件，Object.keys()將物件的所有key值拿出來作陣列 */}
+                {/* map() , find()是陣列方法 */}
+                {/* find()：查找並返回第一個符合條件的元素 */}
 
                 {Object.keys(cartItems).map((itemId) => {
 
@@ -182,7 +187,7 @@ const Cart = () => {
                       <td className="py-4 md:px-4 px-1 text-gray-600">{currency} {(product.price * cartItems[itemId])}</td>
 
 
-                      {/* 商品的第五格 - 移除按鈕 */}
+                      {/* 橫列的第五格 - 移除按鈕 */}
 
                       <td className="py-4 md:px-4 px-1 text-gray-600">
 

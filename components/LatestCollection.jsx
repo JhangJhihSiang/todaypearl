@@ -17,8 +17,9 @@ const LatestCollection = () => {
 
   // 顯示最新的10個產品
   // [...product] : 拷貝陣列，不改變原來陣列
-  // reverse() : 反轉陣列，新的在前，舊的在後
-  // slice(0,10) : 提取 0 ~ 9 的元素，不包含10
+  // reverse() : 反轉陣列，新的在前，舊的在後，會改變原陣列
+  // slice(0,10) : 提取 0 ~ 9 的元素，不包含10，回傳新陣列，不會改變原陣列
+  // reverse() , slice()都是陣列方法
 
   useEffect(() => {
 
@@ -36,6 +37,9 @@ const LatestCollection = () => {
 
     <div className='my-10'>
 
+
+      {/* 標題 */}
+
       <div className='text-center py-8 text-4xl '>
 
         <Title
@@ -52,7 +56,7 @@ const LatestCollection = () => {
       </div>
 
 
-      {/* 顯示商品，將 props 傳到 ProductItem 的 components 中 */}
+      {/* 顯示商品，將父元件的 props 傳到 ProductItem 的 props 中 */}
 
       <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
 

@@ -132,6 +132,8 @@ const List = () => {
 
 
                 {/* 產品清單 */}
+                {/* [...list] : 複製陣列，不影響原陣列 */}
+                {/* reverse() : 反轉陣列，新的在前，舊的在後 */}
 
                 {
                     [...list].reverse().map((item, index) => {

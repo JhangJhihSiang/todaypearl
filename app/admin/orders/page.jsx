@@ -119,15 +119,20 @@ const Orders = () => {
 
       <h3>客戶訂單</h3>
 
+
+      {/* orders(陣列)：所有訂單o*/}
+      {/* order(物件)：每筆訂單*/}
+
       <div>
 
         {
           orders.map((order, index) => (
-
+            
             <div className='grid grid-cols-1 sm:grid-cols-[0.5fr_2fr_1fr] lg:grid-cols-[0.5fr_2fr_1fr_1fr_1fr] gap-3 items-start border-2 border-gray-200 p-5 md:p-8 my-3 md:my-4 text-xs sm:text-sm text-gray-700' key={index}>
 
 
               {/* 訂單狀態是交易完成的話就打勾，不是就不打勾 */}
+              {/* readOnly：不讓用戶手動控制打勾 */}
 
               <input
                 type='checkbox'
@@ -137,6 +142,8 @@ const Orders = () => {
 
 
               {/* 訂單的產品照片 ＋ 名稱 ＋ 數量 */}
+              {/* items(陣列)：每筆訂單中的items欄位*/}
+              {/* item(物件)：items陣列中的每個物件*/}
 
               <div>
 
@@ -196,6 +203,8 @@ const Orders = () => {
 
 
               {/* 姓名 ＋ 商品種類、數量 ＋ 超商選擇 ＋ 門市代碼 ＋ 日期 */}
+              {/* reduce()：處理元素(item)最後返回單一值，total 從 0 開始，每次累積到 total 中，直到最後返回一個最終的 total */}
+              {/* split(',')：針對字串，以 '，'作分隔，然後返回一陣列 */}
 
               <div>
 
@@ -218,6 +227,7 @@ const Orders = () => {
 
 
               {/* 訂單狀態選單 ，改變會觸發 OnChange, 執行 statusHandler函式*/}
+              {/* 給後端的資料中： status: event.target.value ， order.status 會依 value 不同而有所變化  */}
 
               <select
                 onChange={(event) => statusHandler(event, order._id)}
