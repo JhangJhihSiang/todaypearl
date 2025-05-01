@@ -1,14 +1,14 @@
 'use client'
 
 import BestSeller from '@/components/BestSeller'
-import Copyright from '@/components/Copyright'
-import Footer from '@/components/Footer'
 import Hero from '@/components/Hero'
 import LatestCollection from '@/components/LatestCollection'
 import Navbar from '@/components/Navbar'
-import OurPolicy from '@/components/OurPolicy'
+import Features from '@/components/Features'
 import ScrollToTop from '@/components/ScrollToTop'
 import React from 'react'
+import SocialMedia from '@/components/SocialMedia'
+import Footer from '@/components/Footer'
 
 const Home = () => {
   return (
@@ -25,11 +25,11 @@ const Home = () => {
 
         <BestSeller />
 
-        <OurPolicy />
+        <Features />
 
-        <Footer />
+        <SocialMedia/>
 
-        <Copyright />
+        <Footer/>
 
       </div>
 
