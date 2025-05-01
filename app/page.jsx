@@ -34,7 +34,7 @@ const Home = () => {
       </div>
 
 
-      <div className='hidden sm:block'>
+      <div>
 
       <ScrollToTop  />
       
