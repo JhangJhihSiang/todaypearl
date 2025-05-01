@@ -24,13 +24,13 @@ const Hero = () => {
 
           <h1 className="text-4xl font-bold text-gray-900 mb-6 ">市集出攤</h1>
 
-          <p className="text-lg text-gray-700 mb-6">4/3 ~ 4/6 : 駁二大義</p>
+          <p className="text-lg text-gray-700 mb-6">5/3 ~ 5/4 : 駁二大義</p>
 
-          <p className="text-lg text-gray-700 mb-6">4/3 ~ 4/6 : 駁二大義</p>
+          <p className="text-lg text-gray-700 mb-6">5/10 ~ 5/11 : 駁二大義</p>
 
-          <p className="text-lg text-gray-700 mb-6">4/3 ~ 4/6 : 駁二大義</p>
+          <p className="text-lg text-gray-700 mb-6">5/17 ~ 5/18 : 駁二大義</p>
 
-          <p className="text-lg text-gray-700 mb-6">4/3 ~ 4/6 : 駁二大義</p>
+          <p className="text-lg text-gray-700 mb-6">5/30 ~ 6/1 : 台南南紡</p>
 
         </div>
 
