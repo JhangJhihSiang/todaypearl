@@ -41,11 +41,22 @@ const Contact = () => {
 
           <p className='text-gray-500'>隨機出沒於台灣地區各個角落 <br /> 詳細消息請參閱ＩＧ或網頁</p>
 
-          <p className='text-gray-500'>Tel: (415) 555-0132 <br /> Email: admin@forever.com</p>
+          <p className='text-gray-500'>Tel: 0909090909 <br /> Email: today_pearl@gmail.com</p>
 
           <button 
             onClick={() => router.push('/opinion')}
-            className='border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500'>Explore Jobs</button>
+            className='group flex gap-2 items-center border border-black px-4 py-4 rounded-md text-sm hover:bg-black hover:text-white transition-all duration-500'
+          >
+            
+            意見箱
+
+                        <Image
+                          src={assets.left_arrow}
+                          alt="arrow_left_icon_colored"
+                          className="group-hover:translate-x-1 transition rotate-180 w-4"
+                        />
+            
+          </button>
 
 
         </div>

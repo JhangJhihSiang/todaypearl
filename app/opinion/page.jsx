@@ -78,7 +78,7 @@ const Opinion = () => {
 
         <div className='inline-flex items-center gap-2 mb-2 mt-10'>
 
-          <p className='prata-regular text-3xl'>意見箱</p>
+          <p className='text-3xl'>意見箱</p>
 
           <hr className='border-none h-[1.5px] w-8 bg-gray-800' />
 
@@ -112,8 +112,8 @@ const Opinion = () => {
             type="text"
             placeholder='寫下您寶貴的意見'
             required
-            rows={10}
-            className='w-full max-w-[500px] px-3 py-2 border'
+            rows={15}
+            className='w-full max-w-[500px] px-3 py-2 border resize-none'
           />
 
         </div>
