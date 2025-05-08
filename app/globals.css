@@ -37,3 +37,22 @@ a.active hr{
   }
 
 }
+
+
+/* 針對 Microsoft Edge 瀏覽器自動加在密碼欄位中的按鈕，隱藏顯示按鈕跟清空按鈕 */
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+/* 針對 Chrome 和其他使用 Webkit 的瀏覽器 */
+
+input::-webkit-credentials-auto-fill-button {
+
+  visibility: hidden;
+
+  height: 0;
+
+  width: 0; 
+}

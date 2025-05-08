@@ -3,6 +3,7 @@ import { ShopContext } from '@/context/ShopContext';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useContext, useState } from 'react'
+import { toast } from 'react-toastify';
 
 
 const ProductItem = ({ id, image, name, price }) => {
@@ -10,10 +11,53 @@ const ProductItem = ({ id, image, name, price }) => {
 
 
 
-  const { currency, addToCart } = useContext(ShopContext);
+  const { currency, addToCart, updateQuantity } = useContext(ShopContext);
 
 
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);  //是否滑鼠有接觸到
+
+  const [isClicked, setIsClicked] = useState(false);  // 是否有點擊過
+
+
+
+
+  // 滑鼠有接觸到或是有被點擊過就顯示紅心，否則就顯示空心
+
+  const heartIcon = isHovered || isClicked ? assets.heart_icon_red : assets.heart_icon;
+
+
+
+
+  // 控制愛心的點擊功能
+
+  const handleHeartClick = () => {
+
+
+    // 已經有被點擊過的情形下(紅心)，再被點擊後執行以下功能
+
+    if (isClicked) {
+
+      updateQuantity(id, 0);
+
+      toast.success('已從購物車移除', { autoClose: 500 })
+
+
+
+      // 尚未被點擊過的情形下(空心)，再被點擊後執行以下功能
+
+    } else {
+
+      addToCart(id);
+
+    }
+
+
+    // true <--> false相互轉換
+
+    setIsClicked(!isClicked);
+
+
+  };
 
 
 
@@ -57,19 +101,20 @@ const ProductItem = ({ id, image, name, price }) => {
         </div>
 
 
-        {/* 愛心按鈕，按了會加入到購物車 */}
+        {/* 愛心按鈕，按了執行 handleHeartClick 函式*/}
+        {/* 若已被點擊過(紅心)會從購物車移除，尚未被點擊過(空心)會加到購物車中 */}
 
         <div>
 
           <button
-            onClick={() => addToCart(id)}
+            onClick={handleHeartClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             className="max-sm:hidden px-4 py-1.5 text-gray-500 border border-gray-500/20 rounded-full text-xs hover:bg-slate-50 transition"
           >
 
             <Image
-              src={isHovered ? assets.heart_icon_red : assets.heart_icon}
+              src={heartIcon}
               alt='heart_icon'
               width={10}
               height={10}
