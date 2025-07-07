@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Navbar from '@/components/Navbar';
+import Notification from '@/components/Notification';
 
 
 const Opinion = () => {
@@ -12,6 +13,11 @@ const Opinion = () => {
   const [email, setEmail] = useState('')
 
   const [opinion, setOpinion] = useState('')
+
+  const [notification, setNotification] = useState(null);  // 用來管理通知的狀態
+
+  const [isRedirecting, setIsRedirecting] = useState(false);  // 控制是否開始跳轉
+
 
 
 
@@ -35,14 +41,28 @@ const Opinion = () => {
 
       if (data.success) {
 
-        toast.success('意見已成功提交', { autoClose: 1000 });
-
 
         // 清空欄位
 
         setEmail('');
 
         setOpinion('');
+
+        setNotification({
+
+          success: true,
+
+          message: (
+
+            <>
+
+              <p>已將您的寶貴意見送出</p>
+
+            </>
+
+          )
+
+        });
 
       }
 
@@ -51,11 +71,45 @@ const Opinion = () => {
 
       console.log(error)
 
-      toast.error(error.message)
+      setNotification({ success: false, message: error.message });
 
     }
 
   }
+
+
+  useEffect(() => {
+
+
+    // 有 token 且沒有跳轉時才會執行程式碼
+
+    if (!isRedirecting) {
+
+      setIsRedirecting(true);
+
+
+      // 三秒後跳至首頁
+
+      setTimeout(() => {
+
+        router.push('/');
+
+      }, 3000);
+
+    }
+
+  }, [isRedirecting]);
+
+
+
+
+  // 處理通知關閉
+
+  const handleCloseNotification = () => {
+
+    setNotification(null);
+
+  };
 
 
 
@@ -64,6 +118,23 @@ const Opinion = () => {
     <>
 
       <Navbar />
+
+
+      {/* 顯示錯誤或成功通知 */}
+
+      {notification && (
+
+        <Notification
+
+          // 將這些 props 傳入 Notification 的子元件中
+
+          message={notification.message}
+
+          onClose={handleCloseNotification}
+
+        />
+
+      )}
 
 
       {/* 意見表單 */}

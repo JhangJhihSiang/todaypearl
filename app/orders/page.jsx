@@ -7,8 +7,6 @@ import { useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import Image from 'next/image'
-import { admin_assets } from '@/assets/admin_assets'
-import { useRouter } from 'next/navigation'
 import { ShopContext } from '@/context/ShopContext'
 import Navbar from '@/components/Navbar'
 import Title from '@/components/Title'
@@ -16,32 +14,42 @@ import { assets } from '@/assets/assets'
 
 const Orders = () => {
 
-  const {token, currency} = useContext(ShopContext)
+  const { token, currency } = useContext(ShopContext)
 
 
   const [orders, setOrders] = useState([])
-  
 
 
+
+  // 取得用戶的所有訂單
 
   const fetchAllOrders = async () => {
 
+
     if (!token) {
 
-      toast.error('please login first')
+      toast.error('請先登入')
+
       return null;
     }
 
+
     try {
 
-      const response = await axios.get('/api/order/list', { headers: {Authorization: `Bearer ${token}`}})
+
+      // 去指定後端 api/order/list 執行功能 
+      // { headers: { Authorization: `Bearer ${token}` } } ： 告訴後端我是誰
+
+      const response = await axios.get('/api/order/list', { headers: { Authorization: `Bearer ${token}` } })
 
       if (response.data.success) {
 
         setOrders(response.data.orders.reverse())
 
       } else {
+
         toast.error(response.data.message)
+
       }
 
     } catch (error) {
@@ -50,38 +58,11 @@ const Orders = () => {
 
       toast.error(error.message)
 
-
-    }
-
-
-
-  }
-
-
-
-  const statusHandler = async (event, orderId) => {
-
-    try {
-
-      const response = await axios.post('/api/order/status', {orderId, status:event.target.value}, {headers: {token}})
-
-      if(response.data.success){
-
-        await fetchAllOrders()
-
-      }
-
-
-      
-    } catch (error) {
-
-      console.log(error)
-
-      toast.error(response.data.message)
-      
     }
 
   }
+
+
 
 
 
@@ -94,22 +75,82 @@ const Orders = () => {
 
 
 
-    // Function to determine styles based on status
-    const getStatus = (status) => {
+  // 根據不同的訂單狀態，呈現相對應的程式碼
 
-      switch(status) {
-        case '訂單處理中':
-          return (<Image src={assets.gray_circle} width={20} height={20}/>);  // Order Placed status
-        case '商品已寄件':
-          return (<Image src={assets.yellow_circle} width={20} height={20}/>);  // Order Placed status
-        case '商品已到指定門市，記得取貨唷～':
-          return (<Image src={assets.red_circle} width={20} height={20}/>);  // Order Placed status
-        case '交易完成':
-          return (<Image src={assets.green_circle} width={20} height={20}/>);  // Order Placed status
-        default:
-          return '';  // Default empty string if no status matches
-      }
+  const getStatus = (status) => {
+
+    switch (status) {
+
+
+      // 訂單狀態一：訂單處理中
+
+      case '訂單處理中':
+
+        return (
+
+          <Image
+            src={assets.gray_circle}
+            alt='gray_circle'
+            width={20}
+            height={20}
+          />
+
+        );
+
+
+      // 訂單狀態二：商品已寄件
+
+      case '商品已寄件':
+
+        return (
+
+          <Image
+            src={assets.yellow_circle}
+            alt='yellow_circle'
+            width={20}
+            height={20}
+          />
+
+        );
+
+
+      // 訂單狀態三：商品已到指定門市
+
+      case '商品已到指定門市':
+
+        return (
+
+          <Image
+            src={assets.red_circle}
+            alt='red_circle'
+            width={20}
+            height={20}
+          />
+
+        );
+
+
+      // 訂單狀態四：交易完成
+
+      case '交易完成':
+
+        return (
+
+          <Image
+            src={assets.green_circle}
+            alt='green_circle'
+            width={20}
+            height={20}
+          />
+
+        );
+
+
+      default:
+        return '';
+
     }
+  }
 
 
 
@@ -119,109 +160,133 @@ const Orders = () => {
   return (
 
     <>
-    <Navbar />
 
-    <div>
+      <Navbar />
 
-      <Title text1={'我的'} text2={'訂單'} />
+
+      <div>
+
+        <Title
+          text1={'我的'}
+          text2={'訂單'}
+        />
+
+      </div>
+
+
 
       <div>
 
         {
           orders.map((order, index) => (
-            
-            <div className='grid grid-cols-1 sm:grid-cols-[0.5fr_2fr_1fr] lg:grid-cols-[0.5fr_2fr_1fr_1fr_1fr] gap-3 items-start border-2 border-gray-200 p-5 md:p-8 my-3 md:my-4 text-xs sm:text-sm text-gray-700' key={index}>
-
-<Image
-    key={index}
-    src={order.items.image}
-    width={48}
-    height={48}
-    className="w-12 h-12 object-cover"
-    alt={order.name}/>
-              <div>
 
 
-                <div>
-
-                  {order.items.map((item, index) => {
-                    
-                    if (index === order.items.length - 1) {
-                      
-                      // return <p key={index} className='py-0.5'> {item.name} X {item.quantity}</p>
-                      return <Image src={item.image[0]} width={100} height={100} alt='item.image' />
-                      
-                    } else {
-                      
-                      // return <p key={index} className='py-0.5'> {item.name} X {item.quantity} , </p>
-                      return <Image src={item.image[0]} width={100} height={100} alt='item.image' />
-                      
-                    }
-                    
-                  })}
-
-                </div>
-
-                <p className='mt-3 mb-2 font-medium'>{order.store}</p>
-
-                {/* <div>
-
-<p>{order.address.store + ","}</p>
-
-<p>{order.address.city + ", " + order.address.state + ", " + order.address.country + ", " + order.address.zipcode}</p>
+            <div className='grid grid-cols-1 sm:grid-cols-[0.5fr_2fr_1fr] lg:grid-cols-[1.5fr_1.5fr_1fr_1fr] gap-3 items-start border-2 border-gray-200 p-5 md:p-8 my-3 md:my-4 text-xs sm:text-sm text-gray-700' key={index}>
 
 
-</div> */}
 
-                {/* <p>{order.address.phone}</p> */}
-
-              </div>
+              {/* 第一個區塊：訂單的產品照片 ＋ 名稱 ＋ 數量 */}
+              {/* items(陣列)：每筆訂單中的items欄位*/}
+              {/* item(物件)：items陣列中的每個物件*/}
 
               <div>
 
-                <p className='text-sm sm:text-[15px]'>Items : {order.items.length}</p>
+                {order.items.map((item, index) => {
 
-                {/* <p className='mt-3'>Method : {order.paymentMethod}</p> */}
+                  if (index === order.items.length - 1) {
 
-                <p>Payment : {order.payment ? 'Done' : 'Pending'}</p>
+                    return (
 
-                <p>Date : {new Date(order.date).toLocaleDateString()}</p>
+                      <div
+                        key={index}
+                        className='flex items-center gap-3 mt-2'
+                      >
+
+                        <Image
+                          src={item.image[0]}
+                          alt='item.image'
+                          width={120}
+                          height={120}
+                        />
+
+                        <p className='py-0.5'> {item.name} X {item.quantity}</p>
+
+
+                      </div>
+
+                    )
+
+                  } else {
+
+                    return (
+
+                      <div
+                        key={index}
+                        className='flex items-center gap-3 mt-2'
+                      >
+
+                        <Image
+                          src={item.image[0]}
+                          alt='item.image'
+                          width={120}
+                          height={120}
+                        />
+
+                        <p className='py-0.5'> {item.name} X {item.quantity} , </p>
+
+
+                      </div>
+
+                    )
+
+                  }
+
+                })}
 
               </div>
+
+
+              {/* 第二個區塊：訂單詳細內容 */}
+
+              <div>
+
+                <p className='mt-3 mb-2 font-medium'>有 {order.items.length} 種商品，共 {order.items.reduce((total, item) => total + item.quantity, 0)} 件 </p>
+
+                <p className="mt-3 mb-2 font-medium">{order.store.split(' , ')[0]}</p>
+
+                <p className="mt-3 mb-2 font-medium">{order.store.split(' , ')[1]}</p>
+
+                <p className="mt-3 mb-2 font-medium">日期 : {new Date(order.date).toLocaleDateString()}</p>
+
+              </div>
+
+
+              {/* 第三個區塊：總金額 */}
 
               <p className='text-sm sm:text-[15px]'>{currency}{order.amount}</p>
 
 
-              
 
-                <div>
-                {/* Display status with dynamic prefix */}
+              {/* 第四個區塊：訂單狀態 */}
+
+              <div>
+
                 <p className='flex gap-3'>{getStatus(order.status)} {order.status}</p>
-              </div>             
 
-              {/* <select onChange={(event) => statusHandler(event, order._id)} value={order.status} className='p-2 font-semibold'>
+              </div>
 
-                <option value="訂單處理中">訂單處理中</option>
-
-                <option value="商品已寄件">商品已寄件</option>
-
-                <option value="商品已到指定門市，記得取貨唷～">商品已到指定門市，記得取貨唷～</option>
-
-                <option value="交易完成">交易完成</option>
-
-
-
-              </select> */}
 
             </div>
+
           ))
         }
 
       </div>
 
-    </div>
-        </>
+    </>
+
   )
 }
+
 
 export default Orders

@@ -36,6 +36,9 @@ import gray_circle from './gray_circle.png'
 import green_circle from './green_circle.png'
 import red_circle from './red_circle.png'
 import yellow_circle from './yellow_circle.png'
+import eye_close from '../assets/eye_close.png'
+import eye_open from '../assets/eye_open.png'
+
 
 
 
@@ -81,6 +84,8 @@ export const assets = {
     gray_circle,
     green_circle,
     red_circle,
-    yellow_circle
+    yellow_circle,
+    eye_close,
+    eye_open
 
 }

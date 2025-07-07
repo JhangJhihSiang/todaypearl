@@ -28,9 +28,9 @@ const Cart = () => {
 
             <div className="text-2xl md:text-3xl text-gray-500">
 
-              <Title 
-                text1={'我的'} 
-                text2={'購物車'} 
+              <Title
+                text1={'我的'}
+                text2={'購物車'}
               />
 
             </div>
@@ -84,7 +84,7 @@ const Cart = () => {
               <tbody>
 
 
-                {/* cartItems 為物件，Object.keys()將物件的所有key值拿出來作陣列 */}
+                {/* cartItems 為物件，Object.keys()為物件方法，將物件的所有key值拿出來作陣列 */}
                 {/* map() , find()是陣列方法 */}
                 {/* find()：查找並返回第一個符合條件的元素 */}
 

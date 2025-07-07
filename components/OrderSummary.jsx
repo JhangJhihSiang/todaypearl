@@ -70,7 +70,7 @@ const OrderSummary = () => {
       }
 
 
-      // cartItems 為物件，Object.keys()將物件的所有key值拿出來作陣列
+      // cartItems 為物件，Object.keys()將物件的所有 key 值拿出來作陣列
       // map() , filter()是陣列方法
 
       let cartItemsArray = Object.keys(cartItems).map((key) => ({ product: key, quantity: cartItems[key] }))

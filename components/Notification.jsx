@@ -30,6 +30,8 @@ const Notification = ({ message, onClose }) => {
   return (
 
 
+    // 在螢幕正中間跳出通知訊息
+
     <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg text-2xl">
 
 

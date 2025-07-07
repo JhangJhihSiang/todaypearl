@@ -130,7 +130,7 @@ const Orders = () => {
             
             <div className='grid grid-cols-1 sm:grid-cols-[0.5fr_2fr_1fr] lg:grid-cols-[0.5fr_2fr_1fr_1fr_1fr] gap-3 items-start border-2 border-gray-200 p-5 md:p-8 my-3 md:my-4 text-xs sm:text-sm text-gray-700' key={index}>
 
-
+              {/* 第一個區塊： checkbox */}
               {/* 訂單狀態是交易完成的話就打勾，不是就不打勾 */}
               {/* readOnly：不讓用戶手動控制打勾 */}
 
@@ -141,7 +141,7 @@ const Orders = () => {
               />
 
 
-              {/* 訂單的產品照片 ＋ 名稱 ＋ 數量 */}
+              {/* 第二個區塊：訂單的產品照片 ＋ 名稱 ＋ 數量 */}
               {/* items(陣列)：每筆訂單中的items欄位*/}
               {/* item(物件)：items陣列中的每個物件*/}
 
@@ -202,7 +202,7 @@ const Orders = () => {
               </div>
 
 
-              {/* 姓名 ＋ 商品種類、數量 ＋ 超商選擇 ＋ 門市代碼 ＋ 日期 */}
+              {/* 第三個區塊：姓名 ＋ 商品種類、數量 ＋ 超商選擇 ＋ 門市代碼 ＋ 日期 */}
               {/* reduce()：處理元素(item)最後返回單一值，total 從 0 開始，每次累積到 total 中，直到最後返回一個最終的 total */}
               {/* split(',')：針對字串，以 '，'作分隔，然後返回一陣列 */}
 
@@ -221,12 +221,12 @@ const Orders = () => {
               </div>
 
 
-              {/* 總金額 */}
+              {/* 第四個區塊：總金額 */}
 
               <p className='text-sm sm:text-[15px] text-center'>{currency}{order.amount}</p>
 
 
-              {/* 訂單狀態選單 ，改變會觸發 OnChange, 執行 statusHandler函式*/}
+              {/* 第五個區塊：訂單狀態選單 ，改變會觸發 OnChange, 執行 statusHandler函式*/}
               {/* 給後端的資料中： status: event.target.value ， order.status 會依 value 不同而有所變化  */}
 
               <select
