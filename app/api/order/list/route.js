@@ -28,6 +28,7 @@ export async function GET(req) {
 
       
       // 針對每個 order 中的 items 屬性做操作,抓取其中 product 屬性的值
+      // 這裡的 item.product 就是 productId
 
       order.items.map(item => item.product)
 

@@ -7,6 +7,11 @@ import today_pearl_logo_2 from '../assets/today_pearl_logo_2.png'
 
 
 // hero_swiper
+import hb1 from '../assets/hb1.png'
+import hb2 from '../assets/hb2.png'
+import hb3 from '../assets/hb3.png'
+import hb4 from '../assets/hb4.png'
+
 import hero_swiper_1 from '../assets/hero_swiper_1.png'
 import hero_swiper_2 from '../assets/hero_swiper_2.png'
 import hero_swiper_3 from '../assets/hero_swiper_3.png'
@@ -86,6 +91,10 @@ export const assets = {
     red_circle,
     yellow_circle,
     eye_close,
-    eye_open
+    eye_open,
+    hb1,
+    hb2,
+    hb3,
+    hb4
 
 }
